@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bc1f8g2wk6nyn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1n7p"]
+radius = 0.5
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=845712461]
+position = Vector2(10, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=422716413]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D" unique_id=796407854]
+shape = SubResource("CircleShape2D_l1n7p")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D/CollisionShape2D" unique_id=1930087781]

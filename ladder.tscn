@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dljcvofgkff5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe38t"]
+size = Vector2(81.04075, 17)
+
+[node name="Ladder" type="Area2D" unique_id=294048821]
+position = Vector2(221, 135)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=559014239]
+position = Vector2(0, 1)
+rotation = 1.998402
+shape = SubResource("RectangleShape2D_qe38t")
