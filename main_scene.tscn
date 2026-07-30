@@ -1,27 +1,40 @@
 [gd_scene format=3 uid="uid://c5l6uifyexyd1"]
 
-[ext_resource type="PackedScene" uid="uid://dlh6882nsce61" path="res://entities/player.tscn" id="1_0f027"]
+[ext_resource type="Texture2D" uid="uid://bxbumt6ckmi73" path="res://icon.svg" id="1_2c62f"]
+[ext_resource type="Script" uid="uid://dbnup48jkfujq" path="res://character_body_2d.gd" id="1_gyfs4"]
 [ext_resource type="Texture2D" uid="uid://df866vrccropp" path="res://images.png" id="2_2c62f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5x1h"]
+size = Vector2(131, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyfs4"]
 size = Vector2(340, 60)
 
 [node name="game_scene" type="Node2D" unique_id=1050034935]
 
-[node name="player" parent="." unique_id=1024200221 instance=ExtResource("1_0f027")]
-position = Vector2(616, 341)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=2011033402]
+position = Vector2(6, -5)
+script = ExtResource("1_gyfs4")
 
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=1289721557]
-position = Vector2(-28, -9)
-limit_enabled = false
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1218378790]
+position = Vector2(438, 190)
+texture = ExtResource("1_2c62f")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D/Sprite2D" unique_id=1859613902]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=2139079488]
+position = Vector2(441, 189)
+shape = SubResource("RectangleShape2D_d5x1h")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1288679838]
 position = Vector2(406, 549)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=772798277]
-shape = SubResource("RectangleShape2D_gyfs4")
-
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1760027904]
-position = Vector2(-0.25, 0)
+position = Vector2(45, 116)
 scale = Vector2(1.3313725, 0.3030303)
 texture = ExtResource("2_2c62f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=772798277]
+position = Vector2(30, -142)
+shape = SubResource("RectangleShape2D_gyfs4")
+one_way_collision_margin = 0.0
