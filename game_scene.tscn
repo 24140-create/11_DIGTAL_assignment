@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://hu2gps273w8i" path="res://er.gd" id="2_v1wow"]
 [ext_resource type="Texture2D" uid="uid://bgqdgd7g3gejl" path="res://Screenshot 2026-08-05 144427.png" id="3_mixcd"]
 [ext_resource type="Texture2D" uid="uid://cja015b5b171d" path="res://Screenshot 2026-08-05 143421.png" id="4_mixcd"]
+[ext_resource type="Script" uid="uid://d7gbqvsat7rl" path="res://monkey.gd" id="5_kdryc"]
 [ext_resource type="Texture2D" uid="uid://dl1qyjj6o6aop" path="res://Screenshot_2026-08-07_111900-removebg-preview.png" id="5_mj2jn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5x1h"]
@@ -168,10 +169,11 @@ scale = Vector2(0.9999994, 0.9999994)
 shape = SubResource("RectangleShape2D_e35lh")
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=201147835]
-position = Vector2(901, 65)
+position = Vector2(913, 63)
+script = ExtResource("5_kdryc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2" unique_id=1069823317]
-position = Vector2(13, 6)
+position = Vector2(35, -5)
 shape = SubResource("CapsuleShape2D_kdryc")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2/CollisionShape2D" unique_id=1953323143]
