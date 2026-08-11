@@ -13,4 +13,4 @@ func throw_loop():
 		throw_barrel()
 func throw_barrel()
 	var barrel = barrel_scene.instantiate()
-	varrel.global_position = global_posotopm + vector 2()
+	varrel.global_position = global_posotopm + vector 2(-)
