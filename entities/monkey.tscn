@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d3eunnsj863n7" path="res://entities/monkey.gd" id="1_ml4wq"]
 [ext_resource type="Texture2D" uid="uid://dl1qyjj6o6aop" path="res://Screenshot_2026-08-07_111900-removebg-preview.png" id="1_vt1ep"]
-[ext_resource type="PackedScene" uid="uid://bc1f8g2wk6nyn" path="res://entities/barrel.tscn" id="2_p362r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ml4wq"]
 radius = 20.0
@@ -10,7 +9,6 @@ height = 40.0
 
 [node name="Monkey" type="CharacterBody2D" unique_id=1624380020]
 script = ExtResource("1_ml4wq")
-barrel_scene = ExtResource("2_p362r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=800069135]
 shape = SubResource("CapsuleShape2D_ml4wq")
