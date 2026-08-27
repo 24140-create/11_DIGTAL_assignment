@@ -1,11 +1,18 @@
 extends CharacterBody2D
 
-var barrel_scene = preload("res://entities/barrel.tscn")
+@export var barrel_scene: PackedScence
+@export var throw_interval:= 2.0
+
+var can_throw := true
 
 func _ready():
-	throw_barrel()
+	throw_loop()
+	
+func throw_loop():
+	while true:
+		await get_tree().create_timer(throw_interval).timeout
+		throw_barrel()
 
-func throw_barrel():
+func throw_barrel()
 	var barrel = barrel_scene.instantiate()
-	get_parent().add_child(barrel)
-	barrel.global_position = global_position + Vector2(0, -50)
+	barrel.global_position = global_position + vector2(0,-50)

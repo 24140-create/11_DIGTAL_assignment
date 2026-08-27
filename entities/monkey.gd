@@ -1,22 +1,12 @@
-extends Node2D
+extends CharacterBody2D
 
-#in charge of keeping score and spawning the enemies
+@export var barrel_scene: PackedScene
 
-@onready var enemy_prefab =("res://prefabs/barrel.tscn")
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		throw_barrel()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_enemy_timer_timeout() -> void:
-	var enemy = enemy_prefab.instantiate()
-	#position it
-	var random_y = randi_range(55,65)
-	enemy.position = Vector2(785,random_y)
-	add_child(enemy)
+func throw_barrel():
+	var barrel = barrel_scene.instantiate()
+	get_parent().add_child(barrel)
+	barrel.global_position = global_position + Vector2(50, 0)
