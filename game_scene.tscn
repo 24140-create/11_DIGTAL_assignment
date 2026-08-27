@@ -55,7 +55,7 @@ shape = SubResource("RectangleShape2D_v1wow")
 position = Vector2(13, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_2" unique_id=823238568]
-position = Vector2(371.5083, 587.9678)
+position = Vector2(381, 607)
 rotation = 2.7471483
 scale = Vector2(0.25791082, 0.074868485)
 texture = ExtResource("4_mixcd")
@@ -65,7 +65,7 @@ position = Vector2(394, 337)
 shape = SubResource("RectangleShape2D_mixcd")
 
 [node name="Platform_3" type="StaticBody2D" parent="Platforms" unique_id=2045571882]
-position = Vector2(370, 466)
+position = Vector2(370, 468)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_3" unique_id=1228330737]
 position = Vector2(43, -127.000015)
@@ -73,7 +73,7 @@ scale = Vector2(0.34986225, 0.14107881)
 texture = ExtResource("4_mixcd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_3" unique_id=1376773730]
-position = Vector2(-84, 149)
+position = Vector2(-70, 172)
 shape = SubResource("SegmentShape2D_v1wow")
 
 [node name="Platform_4" type="StaticBody2D" parent="Platforms" unique_id=733450860]
