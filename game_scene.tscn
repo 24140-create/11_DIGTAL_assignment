@@ -1,39 +1,35 @@
 [gd_scene format=3 uid="uid://jnexf6vreb11"]
 
 [ext_resource type="Script" uid="uid://y0r8ramgvab" path="res://game_scene.gd" id="1_mixcd"]
+[ext_resource type="Texture2D" uid="uid://cnhfis8imexu" path="res://entities/image-removebg-preview (6).png" id="2_6e45b"]
 [ext_resource type="PackedScene" uid="uid://xdvuui3v7o35" path="res://entities/player.tscn" id="3_mixcd"]
-[ext_resource type="Texture2D" uid="uid://cja015b5b171d" path="res://Screenshot 2026-08-05 143421.png" id="4_mixcd"]
 [ext_resource type="Script" uid="uid://d7gbqvsat7rl" path="res://scripts/monkey.gd" id="4_mj2jn"]
+[ext_resource type="Script" uid="uid://c8fj36frxjadc" path="res://node_2d.gd" id="6_6e45b"]
 [ext_resource type="PackedScene" uid="uid://wjd7guiijgnt" path="res://entities/monkey.tscn" id="7_6e45b"]
+[ext_resource type="PackedScene" uid="uid://bc1f8g2wk6nyn" path="res://entities/barrel.tscn" id="7_e35lh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1wow"]
 size = Vector2(224, 37.984497)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mixcd"]
-size = Vector2(255, 34)
+size = Vector2(731.5, 17.993774)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_v1wow"]
-a = Vector2(179, -59)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj2jn"]
-size = Vector2(411.82416, 35.11859)
+a = Vector2(792, -156)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mixcd"]
-a = Vector2(-155, -88)
+a = Vector2(-864, -87)
 b = Vector2(36, 23)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdryc"]
-size = Vector2(131.89172, 86.96167)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6e45b"]
-size = Vector2(214, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e35lh"]
-size = Vector2(286.58447, 22.933933)
+size = Vector2(623.07556, 20)
 
 [node name="Game" type="Node2D" unique_id=1050034935]
 position = Vector2(0, 1)
 script = ExtResource("1_mixcd")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1859613902]
+position = Vector2(576, 323)
 
 [node name="Platforms" type="Node2D" parent="." unique_id=1697275309]
 position = Vector2(9, -6)
@@ -42,12 +38,12 @@ position = Vector2(9, -6)
 position = Vector2(279, 518)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_1" unique_id=990959283]
-position = Vector2(-141.77216, 113.17117)
-scale = Vector2(0.41259545, 0.17285353)
-texture = ExtResource("4_mixcd")
+position = Vector2(-115.999985, 115.00001)
+scale = Vector2(0.88888896, 0.25490192)
+texture = ExtResource("2_6e45b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_1" unique_id=594383240]
-position = Vector2(-141.625, 118.57959)
+position = Vector2(-137, 120)
 scale = Vector2(1.3359375, 0.8203125)
 shape = SubResource("RectangleShape2D_v1wow")
 
@@ -55,102 +51,67 @@ shape = SubResource("RectangleShape2D_v1wow")
 position = Vector2(13, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_2" unique_id=823238568]
-position = Vector2(381, 607)
-rotation = 2.7471483
-scale = Vector2(0.25791082, 0.074868485)
-texture = ExtResource("4_mixcd")
+position = Vector2(636.00006, 570)
+rotation = 2.9565878
+scale = Vector2(2.6241274, 0.564)
+texture = ExtResource("2_6e45b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_2" unique_id=928699914]
-position = Vector2(394, 337)
+position = Vector2(519.1079, 239.04677)
+rotation = -0.11170107
 shape = SubResource("RectangleShape2D_mixcd")
 
 [node name="Platform_3" type="StaticBody2D" parent="Platforms" unique_id=2045571882]
 position = Vector2(370, 468)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_3" unique_id=1228330737]
-position = Vector2(43, -127.000015)
-scale = Vector2(0.34986225, 0.14107881)
-texture = ExtResource("4_mixcd")
+position = Vector2(180.34375, -235.58044)
+rotation = -0.11868239
+scale = Vector2(2.4128742, 0.3181997)
+texture = ExtResource("2_6e45b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_3" unique_id=1376773730]
-position = Vector2(-70, 172)
+position = Vector2(-81, 146)
 shape = SubResource("SegmentShape2D_v1wow")
-
-[node name="Platform_4" type="StaticBody2D" parent="Platforms" unique_id=733450860]
-position = Vector2(726, 470)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_4" unique_id=1192539640]
-position = Vector2(-10.000004, 86.999985)
-rotation = 2.8431413
-scale = Vector2(0.55868286, 0.17693788)
-texture = ExtResource("4_mixcd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_4" unique_id=781553081]
-position = Vector2(-7, 82)
-rotation = 2.8431413
-shape = SubResource("RectangleShape2D_mj2jn")
 
 [node name="Platform_5" type="StaticBody2D" parent="Platforms" unique_id=867123240]
 position = Vector2(861, 371)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_5" unique_id=1730648402]
-position = Vector2(-171.00002, 26.99999)
-rotation = 0.5061455
-scale = Vector2(0.31742576, 0.048360094)
-texture = ExtResource("4_mixcd")
+position = Vector2(-264.77774, 2.902794)
+rotation = 6.3966317
+scale = Vector2(2.515864, 0.58300567)
+texture = ExtResource("2_6e45b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_5" unique_id=2127059515]
-position = Vector2(-120, 64)
+position = Vector2(67, 28)
 shape = SubResource("SegmentShape2D_mixcd")
-
-[node name="Platform_6" type="StaticBody2D" parent="Platforms" unique_id=1269202922]
-position = Vector2(110, 158)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_6" unique_id=2032245273]
-position = Vector2(106.000015, 93.00001)
-rotation = 0.7627089
-scale = Vector2(0.19048499, 0.04661956)
-texture = ExtResource("4_mixcd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_6" unique_id=1710015978]
-position = Vector2(105, 93)
-rotation = 0.7592182
-scale = Vector2(1, 0.125)
-shape = SubResource("RectangleShape2D_kdryc")
 
 [node name="Platform_7" type="StaticBody2D" parent="Platforms" unique_id=286976065]
 position = Vector2(645, 14)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_7" unique_id=238147567]
-position = Vector2(114, 96.00001)
-scale = Vector2(0.2892562, 0.08665877)
-texture = ExtResource("4_mixcd")
+position = Vector2(-117.05059, 86.25075)
+rotation = 0.15882497
+scale = Vector2(1.9657506, 0.38642678)
+texture = ExtResource("2_6e45b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_7" unique_id=448813730]
-position = Vector2(112, 99)
+position = Vector2(-138, 91.00001)
+rotation = 0.15882495
 shape = SubResource("RectangleShape2D_6e45b")
 
-[node name="Platform_8" type="StaticBody2D" parent="Platforms" unique_id=259145515]
-position = Vector2(88, 35)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Platform_8" unique_id=522928463]
-position = Vector2(406.00006, 123.00002)
-rotation = -0.33161256
-scale = Vector2(0.38718134, 0.1015625)
-texture = ExtResource("4_mixcd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_8" unique_id=802563029]
-position = Vector2(410.00012, 124.000015)
-rotation = -0.3316125
-scale = Vector2(0.9999994, 0.9999994)
-shape = SubResource("RectangleShape2D_e35lh")
-
 [node name="Monkey" parent="." unique_id=1624380020 instance=ExtResource("7_6e45b")]
-position = Vector2(776, 44)
+position = Vector2(257, -1)
 script = ExtResource("4_mj2jn")
+barrel_scene = null
 
 [node name="Player" parent="." unique_id=817023857 instance=ExtResource("3_mixcd")]
-position = Vector2(76, 559)
+position = Vector2(76, 557)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1859613902]
-zoom = Vector2(2, 2)
+[node name="Node2D" type="Node2D" parent="." unique_id=2065840689]
+position = Vector2(254, -1)
+script = ExtResource("6_6e45b")
+barrel_scene = ExtResource("7_e35lh")
+
+[node name="Timer" type="Timer" parent="Node2D" unique_id=1551644265]

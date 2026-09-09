@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://bc1f8g2wk6nyn"]
 
 [ext_resource type="Script" uid="uid://bjg8nx3swov55" path="res://entities/barrel.gd" id="1_xnf48"]
-[ext_resource type="Texture2D" uid="uid://cqjqxs2nc1ucp" path="res://Barrel-removebg-preview.png" id="2_ku1gj"]
+[ext_resource type="Texture2D" uid="uid://b1sst1lvbpxg6" path="res://scripts/image-removebg-preview.png" id="2_ku1gj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uwug"]
-radius = 84.0
+radius = 69.99999
 
 [node name="Barrel" type="CharacterBody2D" unique_id=362218851]
+position = Vector2(1.9073486e-06, -9.536743e-07)
+scale = Vector2(0.1, 0.1)
 script = ExtResource("1_xnf48")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1532668486]
-position = Vector2(26, 25)
-scale = Vector2(1.1536459, 1.1450617)
+position = Vector2(1.4305115e-06, 1.7642975e-05)
+scale = Vector2(0.37735847, 0.4591837)
 texture = ExtResource("2_ku1gj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=878053432]
 shape = SubResource("CircleShape2D_5uwug")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=360827766]
+position = Vector2(0, -11)
+rect = Rect2(-88, -78, 178, 173)
