@@ -1,22 +1,29 @@
 extends Node2D
 
-#in charge of keeping score and spawning the enemies
+var barrel_scene: PackedScene = preload("res://entities/barrel.tscn")
+@export var spawn_interval: float = 3.0
 
-@onready var enemy_prefab =("res://prefabs/barrel.tscn")
+var spawn_timer: Timer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# Set up a timer to spawn barrels automatically
+	spawn_timer = Timer.new()
+	spawn_timer.wait_time = spawn_interval
+	spawn_timer.autostart = true
+	spawn_timer.timeout.connect(_on_timer_timeout)
+	add_child(spawn_timer)
 
+func spawn_barrel() -> void:
+	if barrel_scene == null:
+		print("Error: Could not load barrel scene!")
+		return
+		
+	# Instance the barrel and set position
+	var new_barrel = barrel_scene.instantiate() as RigidBody2D
+	new_barrel.global_position = global_position
+	
+	# Add the barrel to the main scene tree root so it rolls freely
+	get_tree().current_scene.add_child(new_barrel)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_enemy_timer_timeout() -> void:
-	var enemy = enemy_prefab.instantiate()
-	#position it
-	var random_y = randi_range(55,65)
-	enemy.position = Vector2(785,random_y)
-	add_child(enemy)
+func _on_timer_timeout() -> void:
+	spawn_barrel()
