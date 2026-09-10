@@ -6,6 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uwug"]
 radius = 69.99999
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ku1gj"]
+
 [node name="Barrel" type="CharacterBody2D" unique_id=362218851]
 position = Vector2(1.9073486e-06, -9.536743e-07)
 scale = Vector2(0.1, 0.1)
@@ -23,3 +25,9 @@ shape = SubResource("CircleShape2D_5uwug")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=360827766]
 position = Vector2(0, -11)
 rect = Rect2(-88, -78, 178, 173)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=2098090095]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1047660154]
+shape = SubResource("CircleShape2D_ku1gj")
