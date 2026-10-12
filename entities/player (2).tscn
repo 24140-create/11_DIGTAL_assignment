@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://dlh6882nsce61"]
+[gd_scene format=3 uid="uid://5hjwwws2fn11"]
 
-[ext_resource type="Texture2D" uid="uid://bxbumt6ckmi73" path="res://icon.svg" id="1_4flbx"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5dhv8"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(131.28206, 128.00002)
@@ -10,7 +11,7 @@ size = Vector2(131.28206, 128.00002)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1562989498]
 position = Vector2(0, -5.9604645e-08)
 scale = Vector2(0.3046875, 0.203125)
-texture = ExtResource("1_4flbx")
+texture = SubResource("CompressedTexture2D_5dhv8")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D" unique_id=2134292128]

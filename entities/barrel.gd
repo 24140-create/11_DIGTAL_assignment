@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 # =====================================================================
-#  BARREL
+#  BARREL  --  VERSION 3
 #  Attach this to the root node of barrel.tscn (a CharacterBody2D).
 #
-#  Required child nodes (exact names matter):
-#    Sprite2D                    - optional, the script checks first
+#  Required child nodes (exact names, capital letters matter):
+#    Sprite2D                    - optional
 #    CollisionShape2D            - CircleShape2D, the physical body
 #    VisibleOnScreenNotifier2D   - deletes the barrel when it leaves view
 #    Hitbox                      - an Area2D, with its own CollisionShape2D
@@ -18,12 +18,12 @@ var direction := 1
 
 
 func _ready() -> void:
+	print("### BARREL SCRIPT VERSION 3 IS RUNNING ###")
+
 	floor_snap_length = 8.0  # keeps the barrel glued to slopes
 
 	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
 	$Hitbox.body_entered.connect(_on_hitbox_body_entered)
-
-	print("[BARREL] Spawned at ", global_position)
 
 
 func _physics_process(delta: float) -> void:
@@ -42,27 +42,21 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall():
 		direction *= -1
 
-	# Rolling animation (skipped if you have no Sprite2D child)
+	# Rolling animation (skipped if there is no Sprite2D child)
 	if has_node("Sprite2D"):
 		$Sprite2D.rotation += velocity.x * delta * 0.08
 
 
 # ---------------------------------------------------------------------
-#  This runs when ANY physics body enters the Hitbox area.
-#  Watch the Output panel at the bottom of the Godot editor:
-#
-#    - Nothing prints when you touch a barrel?
-#        -> collision layer/mask problem, or the Hitbox's
-#           CollisionShape2D has no shape resource assigned.
-#
-#    - "no die() function" prints?
-#        -> your player script is missing die(), or it's spelled
-#           differently, or the script isn't attached to the player.
+#  Runs when a physics body enters the Hitbox area.
+#  Anything without a die() function is ignored silently.
 # ---------------------------------------------------------------------
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	print("[BARREL] Hitbox touched: ", body.name)
+	if body == self:
+		return
 
-	if body.has_method("die"):
-		body.die()
-	else:
-		print("[BARREL]   ...but ", body.name, " has no die() function")
+	if not body.has_method("die"):
+		return  # another barrel, or scenery -- not the player
+
+	print("### BARREL HIT THE PLAYER ###")
+	body.die()

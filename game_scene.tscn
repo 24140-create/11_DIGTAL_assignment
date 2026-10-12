@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://d7gbqvsat7rl" path="res://scripts/monkey.gd" id="4_mj2jn"]
 [ext_resource type="Script" uid="uid://c8fj36frxjadc" path="res://node_2d.gd" id="6_6e45b"]
 [ext_resource type="PackedScene" uid="uid://wjd7guiijgnt" path="res://entities/monkey.tscn" id="7_6e45b"]
-[ext_resource type="PackedScene" uid="uid://bc1f8g2wk6nyn" path="res://entities/barrel.tscn" id="7_e35lh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1wow"]
 size = Vector2(219.04092, 25.087463)
@@ -28,12 +27,11 @@ size = Vector2(560.4516, 20)
 position = Vector2(0, 1)
 script = ExtResource("1_mixcd")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=2065840689]
+[node name="BarrelSpawner" type="Node2D" parent="." unique_id=2065840689]
 position = Vector2(322, 23)
 script = ExtResource("6_6e45b")
-barrel_scene = ExtResource("7_e35lh")
 
-[node name="Timer" type="Timer" parent="Node2D" unique_id=1551644265]
+[node name="Timer" type="Timer" parent="BarrelSpawner" unique_id=1551644265]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1859613902]
 position = Vector2(576, 323)

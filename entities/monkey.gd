@@ -1,6 +1,6 @@
 extends Node2D
 
-var barrel_scene: PackedScene = preload("res://entities/barrel.tscn")
+var barrel_scene: PackedScene = preload("res://barrel.tscn")
 @export var spawn_interval: float = 3.0
 
 var spawn_timer: Timer
