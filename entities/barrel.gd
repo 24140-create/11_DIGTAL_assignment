@@ -1,57 +1,87 @@
-
-
 extends CharacterBody2D
 
 # =====================================================================
-#  BARREL  --  VERSION 5
+#  BARREL  --  VERSION 7
 #  Attach this to the root node of barrel.tscn.
 #
-#  This version does NOT rely on the Area2D hitbox working.
-#  It finds the player itself and measures the distance between them.
-#  The Area2D is still used as a backup if it happens to work.
+#  Two independent ways of catching the player, so one failing does
+#  not mean no hits:
+#
+#    1. physical collision  - whatever move_and_slide() bumped into
+#    2. shape overlap       - the Hitbox Area2D, sized automatically
+#                             to sit OUTSIDE the barrel's own body
+#
+#  Whichever notices first wins. The player ignores repeat calls.
 # =====================================================================
 
 @export var speed := 80.0
 @export var gravity := 900.0
-@export var hit_distance := 24.0   # how close counts as a hit
+
+# How far past the barrel's own body the hitbox reaches.
+# Bigger = more forgiving hits. Smaller = stricter.
+@export var hitbox_margin := 10.0
+
+@export var show_debug := true
 
 var direction := 1
-var player: Node2D = null
-var closest_seen := 99999.0
-var report_timer := 0.0
+var hitbox: Area2D = null
+var body_radius := 12.0
+var debug_timer := 0.0
 
 
 func _ready() -> void:
-	print("### BARREL VERSION 5 ###")
+	print("### BARREL VERSION 7 ###")
 	floor_snap_length = 8.0
 
 	if has_node("VisibleOnScreenNotifier2D"):
 		$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
 
-	# Find the player: any node in the scene with a die() function.
-	player = _find_player(get_tree().current_scene)
-	if player == null:
-		push_error("BARREL: could not find any node with a die() function!")
-	else:
-		print("###   found player: ", player.name, " ###")
-
-	# Backup: use the Area2D too, if there is one.
-	if has_node("Hitbox"):
-		var hitbox: Area2D = $Hitbox
-		hitbox.collision_layer = 0
-		hitbox.collision_mask = 0xFFFFFFFF
-		hitbox.monitoring = true
-		hitbox.body_entered.connect(_on_hitbox_body_entered)
+	body_radius = _measure_own_body()
+	_setup_hitbox()
 
 
-func _find_player(node: Node) -> Node2D:
-	if node != self and node is Node2D and node.has_method("die"):
-		return node
-	for child in node.get_children():
-		var found := _find_player(child)
-		if found != null:
-			return found
-	return null
+# Works out how big the barrel's physical shape is, so the hitbox
+# can be made bigger than it.
+func _measure_own_body() -> float:
+	var shape_node: CollisionShape2D = get_node_or_null("CollisionShape2D")
+	if shape_node == null or shape_node.shape == null:
+		return 12.0
+
+	var s := shape_node.shape
+	if s is CircleShape2D:
+		return s.radius
+	if s is RectangleShape2D:
+		return maxf(s.size.x, s.size.y) * 0.5
+	if s is CapsuleShape2D:
+		return maxf(s.radius, s.height * 0.5)
+	return 12.0
+
+
+func _setup_hitbox() -> void:
+	hitbox = get_node_or_null("Hitbox")
+	if hitbox == null:
+		push_error("BARREL: no child Area2D named 'Hitbox'! Only physical collision will work.")
+		return
+
+	hitbox.collision_layer = 0
+	hitbox.collision_mask = 0xFFFFFFFF
+	hitbox.monitoring = true
+	hitbox.position = Vector2.ZERO   # keep it centred on the barrel
+
+	var shape_node: CollisionShape2D = hitbox.get_node_or_null("CollisionShape2D")
+	if shape_node == null:
+		shape_node = CollisionShape2D.new()
+		shape_node.name = "CollisionShape2D"
+		hitbox.add_child(shape_node)
+
+	var circle := CircleShape2D.new()
+	circle.radius = body_radius + hitbox_margin
+	shape_node.shape = circle
+	shape_node.position = Vector2.ZERO
+	shape_node.disabled = false
+
+	print("###   barrel body radius ", snappedf(body_radius, 0.1),
+		" -> hitbox radius ", snappedf(circle.radius, 0.1), " ###")
 
 
 func _physics_process(delta: float) -> void:
@@ -72,33 +102,39 @@ func _physics_process(delta: float) -> void:
 	if has_node("Sprite2D"):
 		$Sprite2D.rotation += velocity.x * delta * 0.08
 
-	_check_player(delta)
+	# --- method 1: whatever we physically bumped into ---
+	for i in get_slide_collision_count():
+		var col := get_slide_collision(i)
+		var other := col.get_collider()
+		if other != null and other != self and other.has_method("die"):
+			print("### HIT (physical collision) ###")
+			other.die()
+			return
+
+	# --- method 2: shape overlap ---
+	if hitbox != null:
+		for other in hitbox.get_overlapping_bodies():
+			if other != self and other.has_method("die"):
+				print("### HIT (shape overlap) ###")
+				other.die()
+				return
+
+	if show_debug:
+		_report(delta)
 
 
-func _check_player(delta: float) -> void:
-	if player == null or not is_instance_valid(player):
+# Prints how close the nearest overlap is getting, so a near-miss
+# is distinguishable from nothing happening at all.
+func _report(delta: float) -> void:
+	debug_timer += delta
+	if debug_timer < 2.0:
 		return
+	debug_timer = 0.0
 
-	var d := global_position.distance_to(player.global_position)
+	var n_bodies := 0
+	if hitbox != null:
+		n_bodies = hitbox.get_overlapping_bodies().size()
 
-	if d < closest_seen:
-		closest_seen = d
-
-	# Every 2 seconds, report the closest this barrel has ever come.
-	report_timer += delta
-	if report_timer >= 2.0:
-		report_timer = 0.0
-		print("[dist] barrel at ", global_position.round(),
-			" player at ", player.global_position.round(),
-			" | closest so far: ", snappedf(closest_seen, 0.1))
-
-	if d <= hit_distance:
-		print("### BARREL HIT THE PLAYER (distance ", snappedf(d, 0.1), ") ###")
-		player.die()
-
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body == self or not body.has_method("die"):
-		return
-	print("### BARREL HIT THE PLAYER (via Area2D) ###")
-	body.die()
+	print("[chk] overlapping bodies: ", n_bodies,
+		" | slide collisions: ", get_slide_collision_count(),
+		" | hitbox radius: ", snappedf(body_radius + hitbox_margin, 0.1))

@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
 # =====================================================================
-#  PLAYER  --  VERSION 2
+#  PLAYER  --  VERSION 3
 #  Attach this to your Player node.
-#  Adds a 2 second invincibility window after respawning so you don't
-#  lose every life to the same cluster of barrels.
+#
+#  New in this version:
+#    - turns red INSTANTLY on being hit, so there is no dead moment
+#      where nothing appears to happen
+#    - shorter pause before respawning
+#    - flashes red during the invincibility window after respawn
 # =====================================================================
 
 # ---------- movement settings ----------
@@ -14,18 +18,31 @@ extends CharacterBody2D
 
 # ---------- lives / death ----------
 @export var max_lives := 3
-@export var respawn_delay := 1.0
-@export var invincible_time := 2.0
+@export var respawn_delay := 0.5     # pause after dying, before respawn
+@export var invincible_time := 2.0   # mercy period after respawning
+
+# ---------- colours ----------
+@export var hit_colour := Color(1.0, 0.2, 0.2)   # red
 
 var lives := 3
 var start_pos := Vector2.ZERO
 var is_dead := false
 var invincible := false
 
+var sprite: CanvasItem = null
+
 
 func _ready() -> void:
 	lives = max_lives
 	start_pos = global_position
+
+	# Find whichever sprite node the player has.
+	sprite = get_node_or_null("Sprite2D")
+	if sprite == null:
+		sprite = get_node_or_null("AnimatedSprite2D")
+	if sprite == null:
+		push_warning("PLAYER: no Sprite2D or AnimatedSprite2D found - the red flash will not show.")
+
 	print("[PLAYER] Ready at ", start_pos, " with ", lives, " lives")
 
 
@@ -53,6 +70,11 @@ func die() -> void:
 	is_dead = true
 	lives -= 1
 	velocity = Vector2.ZERO
+
+	# INSTANT feedback -- happens on the same frame as the hit,
+	# before any waiting, so the hit never feels delayed.
+	_set_colour(hit_colour)
+
 	print("[PLAYER] Died. Lives left: ", lives)
 
 	if lives <= 0:
@@ -67,29 +89,31 @@ func die() -> void:
 	velocity = Vector2.ZERO
 	is_dead = false
 
-	# Mercy period so the next barrel doesn't instantly kill you again.
+	# Mercy period, flashing red so you can see it is active.
 	invincible = true
-	_flash()
+	_flash_red()
 	await get_tree().create_timer(invincible_time).timeout
 	invincible = false
+	_set_colour(Color.WHITE)   # back to normal
 	print("[PLAYER] Invincibility over")
 
 
-# Blinks whichever sprite node the player has. Harmless if there is none.
-func _flash() -> void:
-	var sprite := get_node_or_null("Sprite2D")
-	if sprite == null:
-		sprite = get_node_or_null("AnimatedSprite2D")
+func _set_colour(c: Color) -> void:
+	if sprite != null:
+		sprite.modulate = c
+
+
+# Alternates red / normal for the length of the invincibility window.
+func _flash_red() -> void:
 	if sprite == null:
 		return
 
-	var blinks := int(invincible_time / 0.2)
-	for i in blinks:
+	while invincible:
+		_set_colour(hit_colour)
+		await get_tree().create_timer(0.12).timeout
 		if not invincible:
 			break
-		sprite.modulate.a = 0.3
-		await get_tree().create_timer(0.1).timeout
-		sprite.modulate.a = 1.0
-		await get_tree().create_timer(0.1).timeout
+		_set_colour(Color.WHITE)
+		await get_tree().create_timer(0.12).timeout
 
-	sprite.modulate.a = 1.0
+	_set_colour(Color.WHITE)
