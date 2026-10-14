@@ -11,7 +11,7 @@
 size = Vector2(219.04092, 25.087463)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mixcd"]
-size = Vector2(728.96844, 17.993774)
+size = Vector2(746.4728, 14.45105)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_v1wow"]
 a = Vector2(792, -156)
@@ -62,7 +62,7 @@ scale = Vector2(2.6241274, 0.564)
 texture = ExtResource("2_6e45b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_2" unique_id=928699914]
-position = Vector2(619, 258.99997)
+position = Vector2(623, 256.00003)
 rotation = -0.11170107
 shape = SubResource("RectangleShape2D_mixcd")
 

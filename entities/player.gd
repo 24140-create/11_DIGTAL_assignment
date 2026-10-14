@@ -1,12 +1,10 @@
 extends CharacterBody2D
 
 # =====================================================================
-#  PLAYER  (updated - now reports its collision layer on startup)
-#  Attach this to your Player node (must be a CharacterBody2D).
-#
-#  If you already have movement code you like, keep yours and copy
-#  ONLY the sections marked "LIVES / DEATH", plus the print line in
-#  _ready() and the is_dead check at the top of _physics_process.
+#  PLAYER  --  VERSION 2
+#  Attach this to your Player node.
+#  Adds a 2 second invincibility window after respawning so you don't
+#  lose every life to the same cluster of barrels.
 # =====================================================================
 
 # ---------- movement settings ----------
@@ -14,30 +12,24 @@ extends CharacterBody2D
 @export var jump_velocity := -320.0
 @export var gravity := 900.0
 
-# ---------- LIVES / DEATH ----------
+# ---------- lives / death ----------
+@export var max_lives := 3
+@export var respawn_delay := 1.0
+@export var invincible_time := 2.0
+
 var lives := 3
 var start_pos := Vector2.ZERO
 var is_dead := false
+var invincible := false
 
 
 func _ready() -> void:
-	# Remembers wherever you placed the player in the editor.
+	lives = max_lives
 	start_pos = global_position
-
-	print("[PLAYER] Ready. Start position: ", start_pos)
-
-	# This number tells you which Mask box to tick on the barrel Hitbox:
-	#     1  -> tick box 1
-	#     2  -> tick box 2
-	#     4  -> tick box 3
-	#     8  -> tick box 4
-	#     0  -> PROBLEM: the player is on no layer at all, tick box 1
-	#           under the Player's Collision > Layer
-	print("[PLAYER] collision_layer value = ", collision_layer)
+	print("[PLAYER] Ready at ", start_pos, " with ", lives, " lives")
 
 
 func _physics_process(delta: float) -> void:
-	# LIVES / DEATH -- freeze the player while dead
 	if is_dead:
 		return
 
@@ -53,12 +45,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-# ---------- LIVES / DEATH ----------
-# The barrel calls this when it touches the player.
-# The name must be exactly "die" -- the barrel looks for it by name.
+# The barrel calls this. Name must stay exactly "die".
 func die() -> void:
-	if is_dead:
-		return  # stops two barrels eating two lives on the same frame
+	if is_dead or invincible:
+		return
 
 	is_dead = true
 	lives -= 1
@@ -66,13 +56,40 @@ func die() -> void:
 	print("[PLAYER] Died. Lives left: ", lives)
 
 	if lives <= 0:
-		print("[PLAYER] GAME OVER - reloading scene")
-		await get_tree().create_timer(1.0).timeout
+		print("[PLAYER] GAME OVER")
+		await get_tree().create_timer(respawn_delay).timeout
 		get_tree().reload_current_scene()
 		return
 
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(respawn_delay).timeout
+
 	global_position = start_pos
 	velocity = Vector2.ZERO
 	is_dead = false
-	print("[PLAYER] Respawned at ", start_pos)
+
+	# Mercy period so the next barrel doesn't instantly kill you again.
+	invincible = true
+	_flash()
+	await get_tree().create_timer(invincible_time).timeout
+	invincible = false
+	print("[PLAYER] Invincibility over")
+
+
+# Blinks whichever sprite node the player has. Harmless if there is none.
+func _flash() -> void:
+	var sprite := get_node_or_null("Sprite2D")
+	if sprite == null:
+		sprite = get_node_or_null("AnimatedSprite2D")
+	if sprite == null:
+		return
+
+	var blinks := int(invincible_time / 0.2)
+	for i in blinks:
+		if not invincible:
+			break
+		sprite.modulate.a = 0.3
+		await get_tree().create_timer(0.1).timeout
+		sprite.modulate.a = 1.0
+		await get_tree().create_timer(0.1).timeout
+
+	sprite.modulate.a = 1.0
