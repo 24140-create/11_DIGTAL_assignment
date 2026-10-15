@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# PLAYER -- VERSION 8 (look upgrade: neon outline, glow aura, motion trail)
+
 
 @export var speed := 120.0
 @export var jump_velocity := -320.0
@@ -17,13 +17,12 @@ extends CharacterBody2D
 @export var particle_size := 6.0
 
 # ---------- look settings ----------
-@export var neon_colour := Color("#4de3ff")   # outline, glow and trail colour
-@export var outline_width := 1.5              # outline thickness in sprite pixels
-@export var glow_size := 2.0                  # glow size, raise if it looks small
-@export var glow_strength := 0.45             # 0 = no glow, 1 = very bright
+@export var neon_colour := Color("#4de3ff")   
+@export var outline_width := 1.5              
+@export var glow_size := 2.0                 
+@export var glow_strength := 0.45             
 @export var trail_on := true
-@export var trail_gap := 0.05                 # seconds between trail copies
-
+@export var trail_gap := 0.05                 
 var lives := 3
 var start_pos := Vector2.ZERO
 var is_dead := false
@@ -81,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		_burst(global_position, dust_colour, 8, 80.0)
 	was_on_floor = is_on_floor()
 
-	# Motion trail while moving or in the air
+	
 	trail_timer -= delta
 	if trail_on and trail_timer <= 0.0 and (abs(velocity.x) > 10.0 or not is_on_floor()):
 		_spawn_ghost()
@@ -157,7 +156,7 @@ void fragment() {
 	sprite.material = mat
 
 
-# ---------- glow aura behind the player ----------
+
 func _make_glow() -> void:
 	var gradient := Gradient.new()
 	var glow_col := neon_colour
@@ -185,13 +184,13 @@ func _make_glow() -> void:
 	glow.material = add
 	add_child(glow)
 
-	# Gentle pulse
+
 	var tween := create_tween().set_loops()
 	tween.tween_property(glow, "scale", Vector2(glow_size * 1.2, glow_size * 1.2), 0.9)
 	tween.tween_property(glow, "scale", Vector2(glow_size, glow_size), 0.9)
 
 
-# ---------- motion trail ----------
+
 func _get_current_texture() -> Texture2D:
 	if sprite is Sprite2D:
 		return (sprite as Sprite2D).texture
@@ -223,7 +222,7 @@ func _spawn_ghost() -> void:
 	tween.tween_callback(ghost.queue_free)
 
 
-# ---------- squash and stretch ----------
+
 func _squash(factor: Vector2) -> void:
 	if sprite_node == null:
 		return

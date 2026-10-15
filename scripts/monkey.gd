@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var barrel_scene: PackedScene
-@export var win_distance := 150.0   # how close you must get to win
+@export var win_distance := 50.0  
 
 var won := false
 var win_label: Label = null
@@ -28,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 	if won or player == null:
 		return
 
-	# Measure from the monkey's sprite if it has one
+	
 	var target := global_position
 	var sprite_node = get_node_or_null("Sprite2D")
 	if sprite_node != null:
@@ -48,7 +48,7 @@ func _win() -> void:
 		round_timer.paused = true
 		time_taken = round_timer.wait_time - round_timer.time_left
 
-	# Load, compare and save the best time
+	
 	var best := 9999.0
 	if FileAccess.file_exists("user://best_time.save"):
 		var f := FileAccess.open("user://best_time.save", FileAccess.READ)

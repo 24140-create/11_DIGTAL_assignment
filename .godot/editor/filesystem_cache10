@@ -1,10 +1,10 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1792052781
+::res://::1792089060
 barrel.tscn::PackedScene::2580835066601410953::1791963590::0::1::::<><><>0<>0<><>::uid://bjg8nx3swov55::::res://entities/barrel.gd<>uid://b1sst1lvbpxg6::::res://scripts/image-removebg-preview.png
 character_body_2d.gd::GDScript::7257530506862217402::1786849717::0::1::::<>CharacterBody2D<><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1786849717::0::1::::<><><>0<>0<><>::
 game_scene.gd::GDScript::51095108961505413::1792046854::0::1::::<>Node2D<><>0<>0<><>::
-game_scene.tscn::PackedScene::658820756258655522::1792052658::0::1::::<><><>0<>0<><>::uid://y0r8ramgvab::::res://game_scene.gd<>uid://b4dq47oatajy3::::res://Sounds/the_mountain-synthwave-593074.mp3<>uid://b7jio7b08dkpc::::res://platforms.gd<>uid://xdvuui3v7o35::::res://entities/player.tscn<>uid://d7gbqvsat7rl::::res://scripts/monkey.gd<>uid://c8fj36frxjadc::::res://node_2d.gd<>uid://wjd7guiijgnt::::res://entities/monkey.tscn<>uid://pjwa56fi1rgc::::res://round_timer.gd<>uid://dy46nktwnrllh::::res://timer_label.gd<>uid://biv1aad2be4if::::res://Sounds/Undertale Death Sound Effect.mp3<>uid://camnga1t5538s::::res://title_screen.gd
+game_scene.tscn::PackedScene::658820756258655522::1792052967::0::1::::<><><>0<>0<><>::uid://y0r8ramgvab::::res://game_scene.gd<>uid://b4dq47oatajy3::::res://Sounds/the_mountain-synthwave-593074.mp3<>uid://b7jio7b08dkpc::::res://platforms.gd<>uid://xdvuui3v7o35::::res://entities/player.tscn<>uid://d7gbqvsat7rl::::res://scripts/monkey.gd<>uid://c8fj36frxjadc::::res://node_2d.gd<>uid://wjd7guiijgnt::::res://entities/monkey.tscn<>uid://pjwa56fi1rgc::::res://round_timer.gd<>uid://dy46nktwnrllh::::res://timer_label.gd<>uid://biv1aad2be4if::::res://Sounds/Undertale Death Sound Effect.mp3<>uid://camnga1t5538s::::res://title_screen.gd
 MONKEY.png::CompressedTexture2D::2346763770337427827::1786849717::1792041813::1::::<><><>0<>0<>26242e0a26d75fcdc50196296086cdad<>res://.godot/imported/MONKEY.png-afc4f7b83c431b398670f8d3fdb9d7e8.ctex::
 node_2d.gd::GDScript::7099993188127173248::1791963590::0::1::::<>Node2D<><>0<>0<><>::
 platforms.gd::GDScript::4651555500425599280::1792045839::0::1::::<>Node2D<><>0<>0<><>::
@@ -14,7 +14,7 @@ Screenshot 2026-08-05 144427.png::CompressedTexture2D::2840776862642043005::1786
 Screenshot_2026-08-07_111900-removebg-preview.png::CompressedTexture2D::7986027971683011299::1792041256::1792041813::1::::<><><>0<>0<>4800c16cf835bc513d629e2d31e136d9<>res://.godot/imported/Screenshot_2026-08-07_111900-removebg-preview.png-c6a9dd2a9ae4d68865724d2356f4ef1e.ctex::
 timer_label.gd::GDScript::8905567250958756225::1792041928::0::1::::<>Label<><>0<>0<><>::
 title_screen.gd::GDScript::4798413977173803412::1792046835::0::1::::<>Node<><>0<>0<><>::
-::res://entities/::1792052658
+::res://entities/::1792052999
 barrel.gd::GDScript::3032534671181197694::1791963590::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Barrel.tscn.tscn::PackedScene::4261824479175015998::1791963590::0::1::::<><><>0<>0<><>::
 barrel_spawner.tscn::PackedScene::6044517976418304422::1786849717::0::1::::<><><>0<>0<><>::
@@ -24,7 +24,7 @@ monkey.gd::GDScript::9134045450200842482::1791963590::0::1::::<>Node2D<><>0<>0<>
 monkey.tscn::PackedScene::1562973602617230893::1786849717::0::1::::<><><>0<>0<><>::uid://d3eunnsj863n7::::res://entities/monkey.gd<>uid://dl1qyjj6o6aop::::res://Screenshot_2026-08-07_111900-removebg-preview.png
 player (2).tscn::PackedScene::2120702884173727322::1791963590::0::1::::<><><>0<>0<><>::
 player.gd::GDScript::4474955459431500875::1792052658::0::1::::<>CharacterBody2D<><>0<>0<><>::
-player.tscn::PackedScene::1621848373790085854::1791963590::0::1::::<><><>0<>0<><>::uid://b40x4lglbhog6::::res://entities/player.gd<>uid://bgqdgd7g3gejl::::res://Screenshot 2026-08-05 144427.png
+player.tscn::PackedScene::1621848373790085854::1792052999::0::1::::<><><>0<>0<><>::uid://b40x4lglbhog6::::res://entities/player.gd<>uid://dio23hoip2d7w::::res://player_sprite.png
 ::res://scripts/::1792046901
 area_2d.gd::GDScript::6639405885562704525::1786849717::0::1::::<>Area2D<><>0<>0<><>::
 collision_shape_2d.gd::GDScript::1711652973713058026::1786849717::0::1::::<>CollisionShape2D<><>0<>0<><>::

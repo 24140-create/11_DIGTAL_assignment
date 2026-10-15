@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var music: AudioStream          # drag your song in here (Inspector)
-@export var music_volume_db := -8.0     # lower = quieter
+@export var music: AudioStream          
+@export var music_volume_db := -8.0    
 
 @onready var round_timer = $RoundTimer
 @onready var timer_label = $CanvasLayer/TimerLabel
@@ -48,7 +48,7 @@ func _start_music() -> void:
 		print("No music set - click the Game node and drag a song into 'Music' in the Inspector.")
 		return
 
-	# Make the song loop (works for mp3 and ogg)
+	
 	if "loop" in music:
 		music.loop = true
 
@@ -68,7 +68,7 @@ func _fade_out_music() -> void:
 	tween.tween_callback(music_player.stop)
 
 
-# ---------- background: gradient sky + twinkling stars ----------
+
 func _make_background() -> void:
 	var layer := CanvasLayer.new()
 	layer.layer = -10

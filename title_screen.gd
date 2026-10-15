@@ -28,7 +28,7 @@ func _ready() -> void:
 	var prompt := _make_label("Press ENTER to start", 32, Color("#ff4fd8"), 60)
 	_make_label("Arrows to move  -  Space to jump  -  Reach the monkey!", 22, Color.WHITE, 130)
 
-	# Pulsing title and blinking prompt
+	
 	var t := create_tween().set_loops()
 	t.tween_property(title, "modulate:a", 0.6, 1.0)
 	t.tween_property(title, "modulate:a", 1.0, 1.0)
