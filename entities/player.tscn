@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xdvuui3v7o35"]
 
 [ext_resource type="Script" uid="uid://b40x4lglbhog6" path="res://entities/player.gd" id="1_b0kkn"]
-[ext_resource type="Texture2D" uid="uid://bgqdgd7g3gejl" path="res://Screenshot 2026-08-05 144427.png" id="1_merdl"]
+[ext_resource type="Texture2D" uid="uid://dio23hoip2d7w" path="res://player_sprite.png" id="2_b0kkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0kkn"]
 size = Vector2(22, 28)
@@ -17,5 +17,5 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986577624]
 position = Vector2(-53, -3)
-scale = Vector2(0.091633484, 0.06331873)
-texture = ExtResource("1_merdl")
+scale = Vector2(3, 2.055)
+texture = ExtResource("2_b0kkn")
