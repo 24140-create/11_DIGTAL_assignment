@@ -1,11 +1,14 @@
 extends Node2D
 
+@onready var round_timer = $RoundTimer
+@onready var timer_label = $CanvasLayer/TimerLabel
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	round_timer.start()
 
+func _process(_delta: float) -> void:
+	timer_label.text = "Time: " + str(ceil(round_timer.time_left))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_round_timer_timeout() -> void:
+	timer_label.text = "TIME UP!"
+	print("Round finished!")

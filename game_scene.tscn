@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://d7gbqvsat7rl" path="res://scripts/monkey.gd" id="4_mj2jn"]
 [ext_resource type="Script" uid="uid://c8fj36frxjadc" path="res://node_2d.gd" id="6_6e45b"]
 [ext_resource type="PackedScene" uid="uid://wjd7guiijgnt" path="res://entities/monkey.tscn" id="7_6e45b"]
+[ext_resource type="Script" uid="uid://pjwa56fi1rgc" path="res://round_timer.gd" id="7_e35lh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1wow"]
 size = Vector2(219.04092, 25.087463)
@@ -113,3 +114,16 @@ barrel_scene = null
 
 [node name="Player" parent="." unique_id=817023857 instance=ExtResource("3_mixcd")]
 position = Vector2(76, 557)
+
+[node name="Round Timer" type="Timer" parent="." unique_id=356756792]
+wait_time = 60.0
+one_shot = true
+autostart = true
+script = ExtResource("7_e35lh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=356374609]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=805351668]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Time: 60"
