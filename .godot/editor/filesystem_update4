@@ -1,7 +1,6 @@
-res://entities/player.tscn
-res://game_scene.gd
+res://game_scene.tscn
 res://scripts/monkey.gd
-res://node_2d.gd
-res://platforms.gd
-res://entities/player.gd
-res://title_screen.gd
+res://entities/player.tscn
+res://entities/barrel_spawner.tscn
+res://barrel.tscn
+res://entities/barrel.gd

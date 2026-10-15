@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var barrel_scene: PackedScene
-@export var win_distance := 50.0  
+@export var win_distance := 0.1 
 
 var won := false
 var win_label: Label = null

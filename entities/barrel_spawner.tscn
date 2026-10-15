@@ -3,3 +3,4 @@
 [node name="barrel spawner" type="Node2D" unique_id=1817447350]
 
 [node name="Timer" type="Timer" parent="." unique_id=669070887]
+wait_time = 0.001

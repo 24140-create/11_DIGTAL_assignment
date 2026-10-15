@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://dio23hoip2d7w" path="res://player_sprite.png" id="2_b0kkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0kkn"]
-size = Vector2(22, 28)
+size = Vector2(34, 29)
 
 [node name="Player" type="CharacterBody2D" unique_id=817023857]
 script = ExtResource("1_b0kkn")
 jump_velocity = -380.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1608867347]
-position = Vector2(-53, -3)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_b0kkn")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986577624]
-position = Vector2(-53, -3)
+position = Vector2(1.1444092e-05, 7.1525574e-07)
 scale = Vector2(3, 2.055)
 texture = ExtResource("2_b0kkn")

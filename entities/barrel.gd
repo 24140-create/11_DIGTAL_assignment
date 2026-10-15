@@ -1,20 +1,7 @@
 extends CharacterBody2D
 
-# =====================================================================
-#  BARREL  --  VERSION 7
-#  Attach this to the root node of barrel.tscn.
-#
-#  Two independent ways of catching the player, so one failing does
-#  not mean no hits:
-#
-#    1. physical collision  - whatever move_and_slide() bumped into
-#    2. shape overlap       - the Hitbox Area2D, sized automatically
-#                             to sit OUTSIDE the barrel's own body
-#
-#  Whichever notices first wins. The player ignores repeat calls.
-# =====================================================================
 
-@export var speed := 80.0
+@export var speed := 100.0
 @export var gravity := 900.0
 
 # How far past the barrel's own body the hitbox reaches.
@@ -40,8 +27,7 @@ func _ready() -> void:
 	_setup_hitbox()
 
 
-# Works out how big the barrel's physical shape is, so the hitbox
-# can be made bigger than it.
+
 func _measure_own_body() -> float:
 	var shape_node: CollisionShape2D = get_node_or_null("CollisionShape2D")
 	if shape_node == null or shape_node.shape == null:
