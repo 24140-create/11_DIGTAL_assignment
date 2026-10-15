@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://biv1aad2be4if"
+path="res://.godot/imported/Undertale Death Sound Effect.mp3-41c3d9aaa57adef5a90b8306c131627d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Undertale Death Sound Effect.mp3"
+dest_files=["res://.godot/imported/Undertale Death Sound Effect.mp3-41c3d9aaa57adef5a90b8306c131627d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

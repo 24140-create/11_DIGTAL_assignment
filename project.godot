@@ -12,7 +12,7 @@ config_version=5
 
 config/name="11_DIGITAL_assignment"
 run/main_scene="uid://jnexf6vreb11"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
@@ -21,6 +21,8 @@ GameState="*uid://qehx4ffdmbcx"
 [display]
 
 window/size/resizable=false
+window/stretch/mode="canvas_items"
+window/stretch/scale=1.12
 
 [input]
 
@@ -43,6 +45,8 @@ KEY_SPACE={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.1764706, 0.105882354, 0.30588236, 1)

@@ -1,0 +1,8 @@
+res://game_scene.tscn
+res://round_timer.gd
+res://timer_label.gd
+res://entities/player.gd
+res://scripts/monkey.gd
+res://game_scene.gd
+res://platforms.gd
+res://title_screen.gd
