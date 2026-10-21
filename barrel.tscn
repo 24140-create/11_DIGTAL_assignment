@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsm8grwks4g33" path="res://Gemini_Generated_Image_z0ccmuz0ccmuz0cc-removebg-preview.png" id="2_a12vh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a12vh"]
-radius = 10.465116
+radius = 11.627909
 
 [node name="Barrel" type="CharacterBody2D" unique_id=362218851]
 position = Vector2(3, 0.99999994)
@@ -13,8 +13,8 @@ script = ExtResource("1_xnf48")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=566357992]
-position = Vector2(-30.000015, -10)
-scale = Vector2(0.620384, 0.59620595)
+position = Vector2(-29.999996, -10)
+scale = Vector2(0.62038404, 0.59620595)
 texture = ExtResource("2_a12vh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=878053432]

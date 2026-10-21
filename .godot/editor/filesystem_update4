@@ -1,6 +1,1 @@
-res://game_scene.tscn
-res://scripts/monkey.gd
-res://entities/player.tscn
-res://entities/barrel_spawner.tscn
 res://barrel.tscn
-res://entities/barrel.gd

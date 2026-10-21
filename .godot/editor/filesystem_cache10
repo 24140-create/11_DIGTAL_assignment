@@ -1,6 +1,6 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1792103280
-barrel.tscn::PackedScene::2580835066601410953::1792103132::0::1::::<><><>0<>0<><>::uid://bjg8nx3swov55::::res://entities/barrel.gd<>uid://cnb8f3huysigl::::res://Gemini_Generated_Image_toirsntoirsntoir-removebg-preview.png
+::res://::1792544256
+barrel.tscn::PackedScene::2580835066601410953::1792103341::0::1::::<><><>0<>0<><>::uid://bjg8nx3swov55::::res://entities/barrel.gd<>uid://dsm8grwks4g33::::res://Gemini_Generated_Image_z0ccmuz0ccmuz0cc-removebg-preview.png
 character_body_2d.gd::GDScript::7257530506862217402::1786410089::0::1::::<>CharacterBody2D<><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1786057303::0::1::::<><><>0<>0<><>::
 game_scene.gd::GDScript::51095108961505413::1792099353::0::1::::<>Node2D<><>0<>0<><>::
@@ -18,8 +18,8 @@ Screenshot_2026-08-07_111900-removebg-preview.png::CompressedTexture2D::79860279
 timer_label.gd::GDScript::8905567250958756225::1792099354::0::1::::<>Label<><>0<>0<><>::
 title_screen.gd::GDScript::4798413977173803412::1792099354::0::1::::<>Node<><>0<>0<><>::
 Untitled.png::CompressedTexture2D::6673878595195161478::1792100498::1792100748::1::::<><><>0<>0<>d5c37d9164a99797466674185ee5b102<>res://.godot/imported/Untitled.png-30da513a925d9064453decddf41ecbd4.ctex::
-::res://entities/::1792102682
-barrel.gd::GDScript::3032534671181197694::1792102681::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://entities/::1792103474
+barrel.gd::GDScript::3032534671181197694::1792103474::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Barrel.tscn.tscn::PackedScene::4261824479175015998::1791848611::0::1::::<><><>0<>0<><>::
 barrel_spawner.tscn::PackedScene::6044517976418304422::1792100304::0::1::::<><><>0<>0<><>::
 image-removebg-preview (6).png::CompressedTexture2D::167648995501548978::1788921803::1788921805::1::::<><><>0<>0<>bdf30d1d1c6ccad0b6448accae3bae4b<>res://.godot/imported/image-removebg-preview (6).png-06404654b6d69ad3eb0eee88da86a34f.ctex::
@@ -28,7 +28,7 @@ monkey.gd::GDScript::9134045450200842482::1791848651::0::1::::<>Node2D<><>0<>0<>
 monkey.tscn::PackedScene::1562973602617230893::1787871217::0::1::::<><><>0<>0<><>::uid://d3eunnsj863n7::::res://entities/monkey.gd<>uid://dl1qyjj6o6aop::::res://Screenshot_2026-08-07_111900-removebg-preview.png
 player (2).tscn::PackedScene::2120702884173727322::1791848613::0::1::::<><><>0<>0<><>::
 player.gd::GDScript::4474955459431500875::1792099353::0::1::::<>CharacterBody2D<><>0<>0<><>::
-player.tscn::PackedScene::1621848373790085854::1792100192::0::1::::<><><>0<>0<><>::uid://b40x4lglbhog6::::res://entities/player.gd<>uid://dio23hoip2d7w::::res://player_sprite.png
+player.tscn::PackedScene::1621848373790085854::1792103472::0::1::::<><><>0<>0<><>::uid://b40x4lglbhog6::::res://entities/player.gd<>uid://dio23hoip2d7w::::res://player_sprite.png
 ::res://scripts/::1792100060
 area_2d.gd::GDScript::6639405885562704525::1785452284::0::1::::<>Area2D<><>0<>0<><>::
 collision_shape_2d.gd::GDScript::1711652973713058026::1785453666::0::1::::<>CollisionShape2D<><>0<>0<><>::
